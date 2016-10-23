@@ -1,0 +1,34 @@
+package by.bkug.benchmarks
+
+import org.openjdk.jmh.annotations.Benchmark
+import org.openjdk.jmh.annotations.Param
+import org.openjdk.jmh.annotations.Scope
+import org.openjdk.jmh.annotations.State
+
+@State(Scope.Benchmark)
+open class ModifyingImmutableList {
+
+    @Param("1", "100", "10000", "1000000")
+    var size: Int = 0
+
+    val players = generatePlayers(size)
+
+    @Benchmark fun iterative(): List<Player> {
+        return players.mapIndexed { i, player ->
+            if (i == 2) player.copy(score = 100)
+            else player
+        }
+    }
+
+    @Benchmark fun toMutable(): List<Player> {
+        val updatedPlayer = players[2].copy(score = 100)
+        val mutable = players.toMutableList()
+        mutable.set(2, updatedPlayer)
+        return mutable.toList()
+    }
+
+    @Benchmark fun toArrayList(): List<Player> {
+        val updatedPlayer = players[2].copy(score = 100)
+        return players.set(2, updatedPlayer)
+    }
+}
