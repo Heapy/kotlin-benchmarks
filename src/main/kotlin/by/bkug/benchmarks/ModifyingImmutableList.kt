@@ -5,6 +5,8 @@ import org.openjdk.jmh.annotations.Param
 import org.openjdk.jmh.annotations.Scope
 import org.openjdk.jmh.annotations.Setup
 import org.openjdk.jmh.annotations.State
+import org.pcollections.PVector
+import org.pcollections.TreePVector
 
 @State(Scope.Thread)
 open class ModifyingImmutableList {
@@ -14,10 +16,12 @@ open class ModifyingImmutableList {
 
     lateinit var players: List<Player>
     lateinit var mutable: MutableList<Player>
+    lateinit var pvector: PVector<Player>
 
     @Setup
     fun setup() {
         players = generatePlayers(size)
+        pvector = TreePVector.from(players)
         mutable = players.toMutableList()
     }
 
@@ -38,6 +42,11 @@ open class ModifyingImmutableList {
     @Benchmark fun toArrayList(): List<Player> {
         val updatedPlayer = players[2].copy(score = 100)
         return players.set(2, updatedPlayer)
+    }
+
+    @Benchmark fun pcollections(): List<Player> {
+        val updatedPlayer = players[2].copy(score = 100)
+        return pvector.with(2, updatedPlayer)
     }
 
     @Benchmark fun baseline(): List<Player> {
