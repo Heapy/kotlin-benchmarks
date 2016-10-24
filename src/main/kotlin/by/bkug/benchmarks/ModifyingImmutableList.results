@@ -12,3 +12,14 @@ ModifyingImmutableList.toMutable         10  thrpt  100  19679357.039 ± 338925.
 ModifyingImmutableList.toMutable        100  thrpt  100   5504388.388 ± 102757.671  ops/s
 ModifyingImmutableList.toMutable      10000  thrpt  100     62809.131 ±   1070.111  ops/s
 ModifyingImmutableList.toMutable    1000000  thrpt  100       258.013 ±      8.076  ops/s
+
+$ java -jar target/benchmarks.jar -f 5 -wi 5 ModifyingImmutableList
+Benchmark                            (size)   Mode  Cnt         Score         Error  Units
+ModifyingImmutableList.baseline          10  thrpt  100  81026110.043 ± 1076989.958  ops/s
+ModifyingImmutableList.baseline         100  thrpt  100  81299168.496 ±  910200.124  ops/s
+ModifyingImmutableList.baseline       10000  thrpt  100  81854190.779 ± 1010264.620  ops/s
+ModifyingImmutableList.baseline     1000000  thrpt  100  83906022.547 ±  615205.008  ops/s
+ModifyingImmutableList.toArrayList       10  thrpt  100  33090236.757 ±  518459.863  ops/s
+ModifyingImmutableList.toArrayList      100  thrpt  100  11074338.763 ±  138272.711  ops/s
+ModifyingImmutableList.toArrayList    10000  thrpt  100    131486.634 ±    1188.045  ops/s
+ModifyingImmutableList.toArrayList  1000000  thrpt  100       531.425 ±      18.513  ops/s

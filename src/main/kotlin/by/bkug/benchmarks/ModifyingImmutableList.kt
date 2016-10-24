@@ -13,10 +13,12 @@ open class ModifyingImmutableList {
     var size: Int = 0
 
     lateinit var players: List<Player>
+    lateinit var mutable: MutableList<Player>
 
     @Setup
     fun setup() {
         players = generatePlayers(size)
+        mutable = players.toMutableList()
     }
 
     @Benchmark fun iterative(): List<Player> {
@@ -36,5 +38,11 @@ open class ModifyingImmutableList {
     @Benchmark fun toArrayList(): List<Player> {
         val updatedPlayer = players[2].copy(score = 100)
         return players.set(2, updatedPlayer)
+    }
+
+    @Benchmark fun baseline(): List<Player> {
+        val updatedPlayer = players[2].copy(score = 100)
+        mutable[2] = updatedPlayer;
+        return mutable
     }
 }
