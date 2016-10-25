@@ -1,36 +1,31 @@
-$ java -jar target/benchmarks.jar -f 5 -wi 5 ModifyingImmutableList
-Benchmark                            (size)   Mode  Cnt         Score        Error  Units
-ModifyingImmutableList.iterative         10  thrpt  100   6885018.769 ± 189148.764  ops/s
-ModifyingImmutableList.iterative        100  thrpt  100    877403.066 ±  20792.117  ops/s
-ModifyingImmutableList.iterative      10000  thrpt  100     10456.272 ±    382.177  ops/s
-ModifyingImmutableList.iterative    1000000  thrpt  100       108.167 ±      3.506  ops/s
-ModifyingImmutableList.toArrayList       10  thrpt  100  33278431.127 ± 560577.516  ops/s
-ModifyingImmutableList.toArrayList      100  thrpt  100  11009646.095 ± 180549.177  ops/s
-ModifyingImmutableList.toArrayList    10000  thrpt  100    129167.033 ±   2532.945  ops/s
-ModifyingImmutableList.toArrayList  1000000  thrpt  100       528.502 ±     16.451  ops/s
-ModifyingImmutableList.toMutable         10  thrpt  100  19679357.039 ± 338925.701  ops/s
-ModifyingImmutableList.toMutable        100  thrpt  100   5504388.388 ± 102757.671  ops/s
-ModifyingImmutableList.toMutable      10000  thrpt  100     62809.131 ±   1070.111  ops/s
-ModifyingImmutableList.toMutable    1000000  thrpt  100       258.013 ±      8.076  ops/s
+$ java -jar target/benchmarks.jar  ModifyingImmutableList
+Benchmark                                 (size)   Mode  Cnt         Score         Error  Units
+ModifyingImmutableList.baseline               10  thrpt  200  77639718.988 ± 1384171.128  ops/s
+ModifyingImmutableList.baseline              100  thrpt  200  75978576.147 ± 1528533.332  ops/s
+ModifyingImmutableList.baseline            10000  thrpt  200  79041238.378 ± 1137107.301  ops/s
+ModifyingImmutableList.baseline          1000000  thrpt  200  84739641.265 ±  557334.317  ops/s
 
-$ java -jar target/benchmarks.jar -f 5 -wi 5 ModifyingImmutableList
-Benchmark                            (size)   Mode  Cnt         Score         Error  Units
-ModifyingImmutableList.baseline          10  thrpt  100  81026110.043 ± 1076989.958  ops/s
-ModifyingImmutableList.baseline         100  thrpt  100  81299168.496 ±  910200.124  ops/s
-ModifyingImmutableList.baseline       10000  thrpt  100  81854190.779 ± 1010264.620  ops/s
-ModifyingImmutableList.baseline     1000000  thrpt  100  83906022.547 ±  615205.008  ops/s
-ModifyingImmutableList.toArrayList       10  thrpt  100  33090236.757 ±  518459.863  ops/s
-ModifyingImmutableList.toArrayList      100  thrpt  100  11074338.763 ±  138272.711  ops/s
-ModifyingImmutableList.toArrayList    10000  thrpt  100    131486.634 ±    1188.045  ops/s
-ModifyingImmutableList.toArrayList  1000000  thrpt  100       531.425 ±      18.513  ops/s
+ModifyingImmutableList.iterative              10  thrpt  200   7389762.016 ±   72981.918  ops/s
+ModifyingImmutableList.iterative             100  thrpt  200    956362.269 ±   11642.808  ops/s
+ModifyingImmutableList.iterative           10000  thrpt  200     10953.451 ±     121.175  ops/s
+ModifyingImmutableList.iterative         1000000  thrpt  200       115.379 ±       1.301  ops/s
 
-$ java -jar target/benchmarks.jar -f 5 -wi 5 ModifyingImmutableList
-Benchmark                             (size)   Mode  Cnt         Score         Error  Units
-ModifyingImmutableList.baseline           10  thrpt  100  79462416.691 ± 1391446.159  ops/s
-ModifyingImmutableList.baseline          100  thrpt  100  79991447.499 ± 1328008.619  ops/s
-ModifyingImmutableList.baseline        10000  thrpt  100  80017095.482 ± 1385143.058  ops/s
-ModifyingImmutableList.baseline      1000000  thrpt  100  81358696.411 ± 1308714.098  ops/s
-ModifyingImmutableList.pcollections       10  thrpt  100  15665979.142 ±  371910.991  ops/s
-ModifyingImmutableList.pcollections      100  thrpt  100   9419433.113 ±  161562.675  ops/s
-ModifyingImmutableList.pcollections    10000  thrpt  100   4747628.815 ±   81192.752  ops/s
-ModifyingImmutableList.pcollections  1000000  thrpt  100   3011819.457 ±   45548.403  ops/s
+ModifyingImmutableList.pcollections           10  thrpt  200  15984856.119 ±  162075.427  ops/s
+ModifyingImmutableList.pcollections          100  thrpt  200   9322011.769 ±  176301.745  ops/s
+ModifyingImmutableList.pcollections        10000  thrpt  200   4854742.140 ±   69066.751  ops/s
+ModifyingImmutableList.pcollections      1000000  thrpt  200   3064251.812 ±   35972.244  ops/s
+
+ModifyingImmutableList.pcollectionsFrom       10  thrpt  200   1585762.689 ±   20972.881  ops/s
+ModifyingImmutableList.pcollectionsFrom      100  thrpt  200     67107.504 ±     808.308  ops/s
+ModifyingImmutableList.pcollectionsFrom    10000  thrpt  200       268.268 ±       2.901  ops/s
+ModifyingImmutableList.pcollectionsFrom  1000000  thrpt  200         1.406 ±       0.015  ops/s
+
+ModifyingImmutableList.toArrayList            10  thrpt  200  34567833.775 ±  423910.463  ops/s
+ModifyingImmutableList.toArrayList           100  thrpt  200  11395084.257 ±   76689.517  ops/s
+ModifyingImmutableList.toArrayList         10000  thrpt  200    134299.055 ±     602.848  ops/s
+ModifyingImmutableList.toArrayList       1000000  thrpt  200       549.064 ±      15.317  ops/s
+
+ModifyingImmutableList.toMutable              10  thrpt  200  32441627.735 ±  391890.514  ops/s
+ModifyingImmutableList.toMutable             100  thrpt  200  11505955.564 ±   71394.457  ops/s
+ModifyingImmutableList.toMutable           10000  thrpt  200    134819.741 ±     526.830  ops/s
+ModifyingImmutableList.toMutable         1000000  thrpt  200       561.031 ±       8.117  ops/s

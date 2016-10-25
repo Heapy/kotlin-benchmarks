@@ -35,8 +35,8 @@ open class ModifyingImmutableList {
     @Benchmark fun toMutable(): List<Player> {
         val updatedPlayer = players[2].copy(score = 100)
         val mutable = players.toMutableList()
-        mutable.set(2, updatedPlayer)
-        return mutable.toList()
+        mutable[2] = updatedPlayer
+        return mutable
     }
 
     @Benchmark fun toArrayList(): List<Player> {
@@ -49,9 +49,13 @@ open class ModifyingImmutableList {
         return pvector.with(2, updatedPlayer)
     }
 
+    @Benchmark fun pcollectionsFrom(): List<Player> {
+        return TreePVector.from(players)
+    }
+
     @Benchmark fun baseline(): List<Player> {
         val updatedPlayer = players[2].copy(score = 100)
-        mutable[2] = updatedPlayer;
+        mutable[2] = updatedPlayer
         return mutable
     }
 }
