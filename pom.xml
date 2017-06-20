@@ -14,7 +14,7 @@
         </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-stdlib</artifactId>
+            <artifactId>kotlin-stdlib-jre8</artifactId>
             <version>${kotlin.version}</version>
         </dependency>
 
@@ -32,9 +32,9 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <jmh.version>1.15</jmh.version>
+        <jmh.version>1.19</jmh.version>
         <javac.target>1.8</javac.target>
-        <kotlin.version>1.0.4</kotlin.version>
+        <kotlin.version>1.1.2-5</kotlin.version>
 
         <!--
             Select a JMH benchmark generator to use. Available options:
