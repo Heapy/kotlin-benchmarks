@@ -20,16 +20,68 @@ open class Collections {
         list = generateList(size)
     }
 
-    @Benchmark fun kotlin(): List<Int> {
-        return list.map { it }
+    @Benchmark
+    fun simpleKotlin(): List<Int> {
+        val mutable = mutableListOf<Int>()
+        for (item in list) {
+            mutable.add(item)
+        }
+        return mutable
     }
 
-    @Benchmark fun kotlinSequence(): List<Int> {
-        return list.asSequence().map { it }.toList()
+    @Benchmark
+    fun simpleKotlinFilter(): List<Int> {
+        val mutable = mutableListOf<Int>()
+        for (item in list) {
+            if (item % 2 == 0) {
+                mutable.add(item)
+            }
+        }
+        return mutable
     }
 
-    @Benchmark fun javaStream(): List<Int> {
-        return list.stream().map { it }.collect(Collectors.toList())
+
+    @Benchmark
+    fun kotlin(): List<Int> {
+        return list
+            .map { it }
+    }
+
+    @Benchmark
+    fun kotlinFilter(): List<Int> {
+        return list
+            .filter { it % 2 == 0 }
+            .map { it }
+    }
+
+    @Benchmark
+    fun kotlinSequence(): List<Int> {
+        return list
+            .asSequence()
+            .map { it }.toList()
+    }
+
+    @Benchmark
+    fun kotlinSequenceFilter(): List<Int> {
+        return list
+            .asSequence()
+            .filter { it % 2 == 0 }
+            .map { it }.toList()
+    }
+
+    @Benchmark
+    fun javaStream(): List<Int> {
+        return list.stream()
+            .map { it }
+            .collect(Collectors.toList())
+    }
+
+    @Benchmark
+    fun javaStreamFilter(): List<Int> {
+        return list.stream()
+            .filter { it % 2 == 0 }
+            .map { it }
+            .collect(Collectors.toList())
     }
 }
 
