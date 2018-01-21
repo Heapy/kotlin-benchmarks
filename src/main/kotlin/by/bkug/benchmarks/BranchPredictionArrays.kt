@@ -9,11 +9,14 @@ import java.util.*
 /**
  * By @Aksigera
  *
- * Benchmark                                Mode  Cnt      Score       Error  Units
- * BranchPredictionArrays.shuffledBoolean  thrpt    4  32137.307 ± 27899.708  ops/s
- * BranchPredictionArrays.shuffledIf       thrpt    4  30471.293 ± 27052.683  ops/s
- * BranchPredictionArrays.sortedBoolean    thrpt    4  31965.579 ± 24775.150  ops/s
- * BranchPredictionArrays.sortedIf         thrpt    4  31135.133 ± 26429.907  ops/s
+ * # Run complete. Total time: 00:27:10
+ *
+ * Benchmark                                Mode  Cnt      Score     Error  Units
+ * BranchPredictionArrays.shuffledBoolean  thrpt  200  34788.069 ±  77.522  ops/s
+ * BranchPredictionArrays.shuffledIf       thrpt  200  33769.478 ± 215.462  ops/s
+ * BranchPredictionArrays.sortedBoolean    thrpt  200  34382.297 ± 169.428  ops/s
+ * BranchPredictionArrays.sortedIf         thrpt  200  34524.087 ± 101.174  ops/s
+ *
  */
 @State(Scope.Thread)
 open class BranchPredictionArrays {
@@ -32,7 +35,10 @@ open class BranchPredictionArrays {
     fun sortedIf(): Boolean {
         var hole = false
         for (i in sorted) {
-            hole = if (i > 0.5) true else false
+            if (i > 0.5)
+                hole = true
+            else
+                hole = false
         }
         return hole
     }
@@ -50,7 +56,10 @@ open class BranchPredictionArrays {
     fun shuffledIf(): Boolean {
         var hole = false
         for (i in shuffled) {
-            hole = if (i > 0.5) true else false
+            if (i > 0.5)
+                hole = true
+            else
+                hole = false
         }
         return hole
     }
