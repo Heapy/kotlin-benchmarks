@@ -32,9 +32,9 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <jmh.version>1.19</jmh.version>
+        <jmh.version>1.20</jmh.version>
         <javac.target>1.8</javac.target>
-        <kotlin.version>1.2.20</kotlin.version>
+        <kotlin.version>1.2.31</kotlin.version>
 
         <!--
             Select a JMH benchmark generator to use. Available options:
